@@ -14,11 +14,6 @@ The full curl format looks like the following:
 
 Note you may have to specify the protocol in the connection path `......@tcp(IP:PORT)....`
 
-An example:
-
-`curl -d 'dataSourceName=CuKhwGRMbIewzsliZlEa:M5I6oE1BTXBoTPFGkf4LeUfN1X7bcI@tcp(mysql.service.cf.internal:3306)/autoscale' -X POST 'mysqlconnectiontest-busy-hartebeest.cfapps-48.slot-59.pez.vmware.com/test'`
-
-
 As you curl this, open another terminal to stream the logs. Successful connection will appear as follows:
 
 ```
