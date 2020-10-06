@@ -10,12 +10,10 @@ import (
 	"time"
 )
 
-
-
 func main() {
 	http.HandleFunc("/", HelloServer)
 	http.HandleFunc("/test", testDatabaseConnection)
-	http.ListenAndServe(":"+ os.Getenv("PORT"), nil)
+	http.ListenAndServe(":"+os.Getenv("PORT"), nil)
 }
 
 func HelloServer(writer http.ResponseWriter, request *http.Request) {
@@ -23,7 +21,7 @@ func HelloServer(writer http.ResponseWriter, request *http.Request) {
 }
 
 //dataSourceName is the post data key for the connection string
-func testDatabaseConnection(w http.ResponseWriter, r *http.Request){
+func testDatabaseConnection(w http.ResponseWriter, r *http.Request) {
 
 	// Double check it's a post request being made
 	if r.Method != http.MethodPost {
@@ -43,16 +41,16 @@ func testDatabaseConnection(w http.ResponseWriter, r *http.Request){
 	//create connection to DB
 	db, err := sql.Open("mysql", dataSourceName)
 	if err != nil {
-		fmt.Println("Failed to open connection to Database.")
+		fmt.Println("Failed to open connection to Database.", err)
 		return
 	}
 
 	//record how long the connection took in microseconds
 	elapsed := time.Since(start)
-	elaspedInSeconds := float64(elapsed)/float64(time.Second)
+	elaspedInSeconds := float64(elapsed) / float64(time.Second)
 
 	//display
-	fmt.Printf("Successfully opened connection to Database in %f seconds.\n", elaspedInSeconds)
+	fmt.Printf("Successfully opened connection to the database in %f seconds.\n", elaspedInSeconds)
 
 	//Pinging the DB
 	if err = db.Ping(); err != nil {
@@ -64,4 +62,3 @@ func testDatabaseConnection(w http.ResponseWriter, r *http.Request){
 	db.Close()
 
 }
-
