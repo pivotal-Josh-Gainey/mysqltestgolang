@@ -10,7 +10,7 @@ To test a connection simply curl with POST to the `/test` endpoint and supply th
 
 The full curl format looks like the following:
 
-`curl -d 'dataSourceName=db_user:password@tcp(localhost:3306)/my_db' -X POST 'URL/test'`
+`curl -d 'dataSourceName=db_user:password@tcp(IP or URL of mysql:3306)/my_db' -X POST 'URL/test'`
 
 Note you may have to specify the protocol in the connection path `......@tcp(IP:PORT)....`
 
