@@ -1,0 +1,6 @@
+applications:
+- name: mysqlconnectiontest
+  memory: 256M
+  health-check-type: process
+  buildpack: binary_buildpack
+  random-route: true
